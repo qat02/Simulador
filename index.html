@@ -1,269 +1,263 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ProgramIA Simuladores Educativos</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simuladores Educativos | El Profe Manuel</title>
+
   <style>
-    :root{
-      --azul:#061b49;
-      --cyan:#00e5ff;
-      --morado:#7c3cff;
-      --rosa:#ff2ca8;
-      --amarillo:#ffd447;
-      --blanco:#ffffff;
+    *{
+      box-sizing:border-box;
     }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+
     body{
       margin:0;
-      font-family: Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at top left, #1b64ff55, transparent 32%),
-        radial-gradient(circle at bottom right, #ff2ca855, transparent 35%),
-        linear-gradient(135deg,#061b49,#090022 65%,#111);
-      min-height:100vh;
+      font-family:Arial, Helvetica, sans-serif;
+      background:linear-gradient(135deg,#061b49,#12002e,#061b49);
       color:white;
-      overflow-x:hidden;
+      min-height:100vh;
+      text-align:center;
+      padding:25px;
     }
-    .wrap{
-      width:min(1100px,94%);
+
+    .container{
+      max-width:1050px;
       margin:auto;
-      padding:28px 0 40px;
     }
-    .hero{
-      display:grid;
-      grid-template-columns: 1fr 1.05fr;
-      gap:28px;
-      align-items:center;
-      min-height:92vh;
-    }
+
     .logos{
       display:flex;
-      gap:14px;
+      justify-content:center;
       align-items:center;
+      gap:25px;
       flex-wrap:wrap;
-      margin-bottom:18px;
+      margin-bottom:20px;
     }
-    .logo-gpt{
-      width:96px;
-      height:96px;
+
+    .logos img{
+      width:130px;
+      height:130px;
       object-fit:contain;
-      border-radius:22px;
-      filter:drop-shadow(0 0 16px #00e5ff99);
       background:white;
-      padding:6px;
+      padding:8px;
+      border-radius:25px;
+      box-shadow:0 0 25px #00e5ff88;
     }
-    .logo-profe{
-      width:96px;
-      height:96px;
-      object-fit:contain;
-      border-radius:22px;
-      background:white;
-      padding:6px;
-      filter:drop-shadow(0 0 14px #ff2ca899);
-    }
-    .tag{
-      display:inline-block;
-      background:linear-gradient(90deg,var(--cyan),var(--morado));
-      padding:8px 14px;
-      border-radius:999px;
-      font-weight:800;
-      color:#061b49;
-      margin-bottom:14px;
-    }
+
     h1{
-      font-size:clamp(36px,6vw,72px);
-      line-height:.95;
-      margin:0;
-      text-shadow:0 0 22px #00e5ff55;
+      font-size:clamp(34px,6vw,64px);
+      margin:10px 0;
+      line-height:1;
+      color:#00e5ff;
+      text-shadow:0 0 20px #00e5ff88;
     }
-    h1 span{color:var(--cyan)}
-    .lead{
-      font-size:clamp(18px,2.4vw,25px);
-      line-height:1.35;
-      color:#e7f8ff;
-      max-width:640px;
+
+    h2{
+      font-size:clamp(20px,3vw,30px);
+      font-weight:400;
+      margin-bottom:25px;
     }
-    .actions{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-      margin-top:24px;
-    }
-    .btn{
-      border:0;
-      text-decoration:none;
-      color:white;
-      padding:16px 22px;
-      border-radius:18px;
-      font-size:18px;
-      font-weight:800;
-      cursor:pointer;
-      box-shadow:0 10px 25px #0007;
-      transition:.2s;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-    }
-    .btn:hover{transform:translateY(-3px) scale(1.02)}
-    .primary{background:linear-gradient(90deg,#ff2ca8,#7c3cff)}
-    .secondary{background:#ffffff18;border:2px solid #ffffff44}
+
     .card{
-      background:#ffffff12;
-      border:1px solid #ffffff22;
-      backdrop-filter:blur(8px);
-      border-radius:30px;
-      padding:22px;
-      box-shadow:0 20px 60px #0006;
+      background:rgba(255,255,255,.12);
+      backdrop-filter:blur(10px);
+      border:1px solid rgba(255,255,255,.25);
+      border-radius:28px;
+      padding:25px;
+      max-width:720px;
+      margin:25px auto;
+      box-shadow:0 15px 40px rgba(0,0,0,.4);
     }
-    .form-title{
-      font-size:26px;
-      font-weight:900;
-      margin:0 0 12px;
-    }
+
     label{
       display:block;
-      font-weight:800;
-      margin-top:12px;
-      margin-bottom:6px;
+      text-align:left;
+      font-weight:bold;
+      margin:15px 0 6px;
       color:#c9fbff;
     }
+
     input, textarea, select{
       width:100%;
-      border:2px solid #ffffff22;
-      background:#061b49cc;
+      padding:14px;
+      border-radius:15px;
+      border:2px solid rgba(255,255,255,.25);
+      background:#061b49;
       color:white;
-      border-radius:16px;
-      padding:13px;
       font-size:16px;
       outline:none;
     }
-    textarea{min-height:120px;resize:vertical}
-    input:focus,textarea:focus,select:focus{border-color:var(--cyan)}
-    .mini{
-      color:#d7e8ff;
-      font-size:14px;
-      line-height:1.35;
-      margin-top:10px;
+
+    textarea{
+      min-height:130px;
+      resize:vertical;
     }
-    .features{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:14px;
+
+    input:focus, textarea:focus, select:focus{
+      border-color:#00e5ff;
+    }
+
+    button{
       margin-top:20px;
+      padding:16px 24px;
+      border:0;
+      border-radius:18px;
+      background:linear-gradient(90deg,#ff2ca8,#7c3cff);
+      color:white;
+      font-size:18px;
+      font-weight:bold;
+      cursor:pointer;
+      box-shadow:0 10px 25px rgba(0,0,0,.4);
+      transition:.2s;
     }
-    .feature{
-      background:#ffffff12;
-      border:1px solid #ffffff22;
-      padding:16px;
-      border-radius:20px;
-      min-height:125px;
+
+    button:hover{
+      transform:scale(1.04);
     }
-    .feature b{font-size:18px;color:#fff}
-    .feature p{color:#dbe9ff;margin-bottom:0}
+
+    .btn2{
+      background:rgba(255,255,255,.18);
+      border:2px solid rgba(255,255,255,.35);
+    }
+
+    .mensaje{
+      margin-top:15px;
+      font-size:16px;
+      color:#dffcff;
+    }
+
     .preview{
       margin-top:18px;
       background:#021335;
+      border:1px dashed #00e5ff;
       border-radius:18px;
-      padding:14px;
-      border:1px dashed #00e5ff88;
+      padding:15px;
       color:#cfffff;
-      font-size:14px;
+      text-align:left;
       white-space:pre-wrap;
-      max-height:170px;
+      max-height:220px;
       overflow:auto;
+      font-size:14px;
     }
+
+    .features{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:15px;
+      margin-top:30px;
+    }
+
+    .feature{
+      background:rgba(255,255,255,.12);
+      border-radius:20px;
+      padding:18px;
+      border:1px solid rgba(255,255,255,.22);
+    }
+
+    .feature h3{
+      margin-top:0;
+      color:#ffd447;
+    }
+
     footer{
-      text-align:center;
+      margin-top:35px;
       color:#d8e7ff;
-      padding:20px;
       font-size:15px;
     }
-    @media(max-width:850px){
-      .hero{grid-template-columns:1fr; padding-top:20px}
-      .features{grid-template-columns:1fr}
-      .logos{justify-content:center}
-      .left{text-align:center}
-      .lead{margin-left:auto;margin-right:auto}
-      .actions{justify-content:center}
-      .logo-gpt,.logo-profe{width:82px;height:82px}
+
+    @media(max-width:750px){
+      body{
+        padding:15px;
+      }
+
+      .logos img{
+        width:95px;
+        height:95px;
+      }
+
+      .features{
+        grid-template-columns:1fr;
+      }
+
+      .card{
+        padding:18px;
+      }
+
+      button{
+        width:100%;
+      }
     }
   </style>
 </head>
+
 <body>
-  <main class="wrap">
-    <section class="hero">
-      <div class="left">
-        <div class="logos">
-          <img class="logo-gpt" src="Simula.png" alt="Logo Simulador IA">
-          <img class="logo-profe" src="logo-profe-manuel.webp" alt="Logo El Profe Manuel">
-        </div>
 
-        <div class="tag">🎮 Recurso digital para docentes</div>
-        <h1>ProgramIA <br><span>Simuladores Educativos</span></h1>
-        <p class="lead">
-          Crea simuladores interactivos tipo juego digital para cualquier tema, grado o materia.
-          Escribe tu idea, copia el prompt y ábrelo en el GPT.
-        </p>
+  <div class="container">
 
-        <div class="actions">
-          <button class="btn primary" onclick="copiarYAbrir()">🚀 Copiar y abrir GPT</button>
-          <a class="btn secondary" href="#crear">✍️ Escribir solicitud</a>
-        </div>
+    <div class="logos">
+      <img src="Simula.png" alt="Logo Simulador IA">
+      <img src="logo-profe-manuel.webp" alt="Logo El Profe Manuel">
+    </div>
+
+    <h1>PractIA Simuladores Educativos</h1>
+
+    <h2>
+      Crea simuladores educativos interactivos tipo juego digital para cualquier tema, grado o materia.
+    </h2>
+
+    <div class="card">
+      <h2>🎮 ¿Qué simulador quieres crear?</h2>
+
+      <label for="grado">Grado o nivel</label>
+      <input id="grado" placeholder="Ejemplo: 3.º de primaria">
+
+      <label for="materia">Materia</label>
+      <input id="materia" placeholder="Ejemplo: Ciencias Naturales">
+
+      <label for="tema">Tema o actividad</label>
+      <textarea id="tema" placeholder="Ejemplo: Quiero trabajar el ciclo del agua de manera gráfica, colorida e interactiva."></textarea>
+
+      <label for="imagenes">¿Tienes imágenes?</label>
+      <select id="imagenes">
+        <option>No, hazlo desde cero con HTML/CSS.</option>
+        <option>Sí, quiero subir imágenes al GPT.</option>
+        <option>Usa mis imágenes solo como referencia visual.</option>
+      </select>
+
+      <button onclick="copiarYAbrir()">🚀 Copiar solicitud y abrir GPT</button>
+      <button class="btn2" onclick="crearPrompt()">👀 Ver prompt</button>
+
+      <div class="mensaje" id="mensaje">
+        Al dar clic se copiará la solicitud y se abrirá el GPT del Profe Manuel.
       </div>
 
-      <div class="card" id="crear">
-        <p class="form-title">¿Qué simulador quieres crear?</p>
-
-        <label>Grado o nivel</label>
-        <input id="grado" placeholder="Ejemplo: 3.º de primaria">
-
-        <label>Materia</label>
-        <input id="materia" placeholder="Ejemplo: Ciencias Naturales">
-
-        <label>Tema o actividad</label>
-        <textarea id="tema" placeholder="Ejemplo: Quiero trabajar el ciclo del agua de manera gráfica, colorida e interactiva."></textarea>
-
-        <label>¿Tienes imágenes?</label>
-        <select id="imagenes">
-          <option>No, hazlo desde cero con HTML/CSS.</option>
-          <option>Sí, quiero subir imágenes al GPT.</option>
-          <option>Usa mis imágenes solo como referencia visual.</option>
-        </select>
-
-        <div class="actions">
-          <button class="btn primary" onclick="copiarYAbrir()">🎮 Generar con mi GPT</button>
-          <button class="btn secondary" onclick="crearPrompt()">👀 Vista del prompt</button>
-        </div>
-
-        <p class="mini" id="mensaje">
-          Al dar clic se copiará la solicitud y se abrirá tu GPT. Solo pega el texto en ChatGPT.
-        </p>
-
-        <div class="preview" id="preview">Aquí aparecerá el prompt preparado.</div>
+      <div class="preview" id="preview">
+Aquí aparecerá el prompt preparado.
       </div>
-    </section>
+    </div>
 
-    <section class="features">
+    <div class="features">
       <div class="feature">
-        <b>🧩 Interactivo</b>
-        <p>Botones, retos, misiones, preguntas, fichas, líneas de tiempo y juegos.</p>
+        <h3>🧩 Interactivo</h3>
+        <p>Retos, misiones, preguntas, fichas, líneas de tiempo, clasificación y juegos.</p>
       </div>
+
       <div class="feature">
-        <b>📱 Adaptable</b>
-        <p>Diseñado para celular, computadora, tablet y proyector.</p>
+        <h3>📱 Adaptable</h3>
+        <p>Funciona para celular, computadora, tablet y proyector.</p>
       </div>
+
       <div class="feature">
-        <b>⬇️ Descargable</b>
+        <h3>⬇️ Descargable</h3>
         <p>El GPT genera un archivo HTML listo para abrir con doble clic.</p>
       </div>
-    </section>
-  </main>
+    </div>
 
-  <footer>
-    Creado por El Profe Manuel · ProgramIA Simuladores Educativos
-  </footer>
+    <footer>
+      Creado por El Profe Manuel · Simuladores Educativos IA
+    </footer>
+
+  </div>
 
 <script>
 const LINK_GPT = "https://chatgpt.com/g/g-6a2c9df97c4881918a6be844125066ef-simuladores-educativos-por-el-profe-manuel";
@@ -290,7 +284,7 @@ Necesito que el simulador sea:
 - con lógica de juego bien programada
 - que permita corregir errores, revisar respuestas, reiniciar e intentar de nuevo
 - que funcione sin internet, sin librerías externas y en un solo archivo HTML
-- que me entregues el HTML listo para descargar o copiar`;
+- que me entregues el HTML listo para descargar o copiar.`;
 
   document.getElementById("preview").textContent = prompt;
   return prompt;
@@ -298,19 +292,17 @@ Necesito que el simulador sea:
 
 async function copiarYAbrir(){
   const prompt = crearPrompt();
+
   try{
     await navigator.clipboard.writeText(prompt);
-    document.getElementById("mensaje").innerHTML = "✅ Prompt copiado. Ahora pega el texto en el GPT que se abrirá.";
-  }catch(e){
+    document.getElementById("mensaje").innerHTML = "✅ Solicitud copiada. Ahora pega el texto en el GPT que se abrirá.";
+  }catch(error){
     document.getElementById("mensaje").innerHTML = "⚠️ No se pudo copiar automático. Copia el texto de la vista previa.";
   }
 
-  if(LINK_GPT.includes("https://chatgpt.com/g/g-6a2c9df97c4881918a6be844125066ef-simuladores-educativos-por-el-profe-manuel")){
-    alert("Falta pegar el enlace real de tu GPT en el archivo index.html, donde dice PEGA_AQUI_EL_LINK_DE_TU_GPT.");
-  }else{
-    window.open(LINK_GPT, "_blank");
-  }
+  window.open(LINK_GPT, "_blank");
 }
 </script>
+
 </body>
 </html>
